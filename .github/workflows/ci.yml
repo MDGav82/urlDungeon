@@ -1,36 +1,28 @@
-name: CI - Test
+name: Node.js CI
 
 on:
   push:
     branches:
-      - main  # Exécuter sur push vers la branche principale (ou remplace 'main' par 'master')
+      - master  # Le workflow se déclenche lors de push sur la branche 'master'
   pull_request:
     branches:
-      - main  # Exécuter lors d'une pull request vers la branche principale (ou remplace 'main' par 'master')
+      - master  # Le workflow se déclenche lors de pull requests vers 'master'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: ubuntu-latest  # Utiliser un runner basé sur Ubuntu
+    
     steps:
-      # Vérifier le code source
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2  # Cloner le code du repository
 
-      # Installer Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Utilise la version de Node.js que tu préfères
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Choisir la version de Node.js (ex: 14)
 
-      # Installer les dépendances
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install  # Installer les dépendances avec npm
 
-      # Exécuter les tests
-      - name: Run tests
-        run: npm test
-
-      # (Facultatif) Déployer le projet ou envoyer un artefact (si tu veux une partie de CD)
-      # - name: Deploy (exemple)
-      #   run: npm run deploy
+    - name: Run tests
+      run: npm test  # Lancer les tests (en utilisant Jest par exemple)
