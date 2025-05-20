@@ -1,0 +1,15 @@
+Retrouver des clées pour pouvoir sortir du donjon URL en atteignant la sortie
+(L'url sera de la sorte: api/sortie/hall/pieceActuelle)
+
+Les clées seront des variables globales: tant que elle ne sont pas toute trouvé (etat true), on se peux pas acceder a l'URL de sortie)
+
+Le joueur commence à api/sortie/hall
+
+Concept des pièces:
+Salle des maths
+Salle de la connaissance historique
+Salle du code
+Salle de l'astronomie
+
+Concept du hall:
+Résoudre des mini enigmes pour pouvoir aller au salles

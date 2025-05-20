@@ -1,0 +1,36 @@
+name: CI - Test
+
+on:
+  push:
+    branches:
+      - main  # Exécuter sur push vers la branche principale (ou remplace 'main' par 'master')
+  pull_request:
+    branches:
+      - main  # Exécuter lors d'une pull request vers la branche principale (ou remplace 'main' par 'master')
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Vérifier le code source
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Installer Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Utilise la version de Node.js que tu préfères
+
+      # Installer les dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Exécuter les tests
+      - name: Run tests
+        run: npm test
+
+      # (Facultatif) Déployer le projet ou envoyer un artefact (si tu veux une partie de CD)
+      # - name: Deploy (exemple)
+      #   run: npm run deploy
