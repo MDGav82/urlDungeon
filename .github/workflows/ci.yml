@@ -3,26 +3,26 @@ name: Node.js CI
 on:
   push:
     branches:
-      - master  # Le workflow se déclenche lors de push sur la branche 'master'
+      - master
   pull_request:
     branches:
-      - master  # Le workflow se déclenche lors de pull requests vers 'master'
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Utiliser un runner basé sur Ubuntu
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # Cloner le code du repository
+      uses: actions/checkout@v2
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Choisir la version de Node.js (ex: 14)
+        node-version: '16'  # Choisir une version de Node.js >= 16
 
     - name: Install dependencies
-      run: npm install  # Installer les dépendances avec npm
+      run: npm install
 
     - name: Run tests
-      run: npm test  # Lancer les tests (en utilisant Jest par exemple)
+      run: npm test
