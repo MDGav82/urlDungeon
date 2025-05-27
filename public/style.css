@@ -1,22 +1,103 @@
-/* Ajouter un style simple pour cacher et afficher les sections */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MedievalSharp', cursive;
+  background: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+  background-color: #f5e9d2;
+  color: #3e2f1c;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.container {
+  background: rgba(255, 248, 220, 0.95);
+  border: 3px solid #8b5e3c;
+  border-radius: 15px;
+  padding: 2em;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+/* Titres */
+h1, h2, h3 {
+  color: #5b3714;
+  margin-bottom: 1em;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+/* Boutons */
+button {
+  font-family: 'MedievalSharp', cursive;
+  background: #6b4226;
+  color: #fff3cd;
+  border: 2px solid #3e2f1c;
+  padding: 0.7em 1.5em;
+  margin: 0.5em;
+  font-size: 1.1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #8b5e3c;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+  font-family: 'MedievalSharp', cursive;
+  padding: 0.6em;
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 1em;
+  border: 2px solid #8b5e3c;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #fffaf0;
+  color: #3e2f1c;
+}
+
+/* Cacher des éléments */
 .hidden {
   display: none;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+/* Clés trouvées */
+#clesListe {
+  list-style: none;
+  margin-top: 1em;
+  padding: 0;
+  font-size: 1.1em;
 }
 
-button {
-  padding: 10px;
-  margin: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+#clesListe li::before {
+  content: "🗝️ ";
+  margin-right: 0.3em;
 }
 
-button:hover {
-  background-color: #45a049;
+#clesListe li {
+  margin-bottom: 0.4em;
+}
+
+/* Bouton de sortie spécial */
+#sortieButton {
+  background: #2e7d32;
+  border-color: #1b5e20;
+}
+
+#sortieButton:hover {
+  background: #43a047;
 }

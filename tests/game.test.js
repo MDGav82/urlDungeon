@@ -149,3 +149,22 @@ describe('API /api/sortie/salle/histoire/enigme', () => {
   });
 });
 
+describe('Robustesse de la comparaison des réponses', () => {
+  it('devrait accepter une réponse correcte même si elle est envoyée sous forme de chaîne', async () => {
+    const response = await request(app)
+      .post('/api/sortie/salle/maths/enigme')
+      .send({ reponse: "144" }); // Chaîne au lieu de nombre
+
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Bonne réponse, la clé est maintenant disponible !');
+  });
+
+  it('devrait accepter une réponse correcte avec des espaces ou majuscules (salle code)', async () => {
+    const response = await request(app)
+      .post('/api/sortie/salle/code/enigme')
+      .send({ reponse: "  OBJECT  " }); // Majuscules et espaces
+
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Bonne réponse, la clé est maintenant disponible !');
+  });
+});

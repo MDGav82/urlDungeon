@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Victoire !</title>
+  <style>
+    body {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      background: url('/images/donjon-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      padding-top: 5em;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ffd700;
+      text-shadow: 2px 2px #000;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-bottom: 2em;
+      text-shadow: 1px 1px #000;
+    }
+
+    button {
+      background: #333;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 0.7em 2em;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+
+  <!-- Google Fonts for a medieval style -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h1>🎉 Bravo, vous êtes sorti de l’abominable donjon ! 🎉</h1>
+  <p>Vous avez trouvé toutes les clés et triomphé de toutes les énigmes !</p>
+
+  <button id="rejouerButton">🔁 Rejouer</button>
+
+  <!-- Musique de fond -->
+  <audio autoplay loop>
+    <source src="/audio/donjon-theme.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'audio HTML5.
+  </audio>
+
+  <script>
+    document.getElementById("rejouerButton").addEventListener("click", function () {
+      fetch('/api/sortie/cles/reset', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          if (data.message === 'Clés réinitialisées') {
+            window.location.href = '/';
+          } else {
+            alert('Erreur lors de la réinitialisation du jeu.');
+          }
+        })
+        .catch(error => {
+          console.error('Erreur:', error);
+          alert('Erreur réseau, réessayez plus tard.');
+        });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Le Donjon</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenue dans le Hall du Donjon</h1>
+    <h1>🏰Bienvenue dans le Hall du Donjon Abominable🏰</h1>
     <button id="startEnigmeButton">Commencer l'énigme du Hall</button>
 
     <div id="enigmesSection" class="hidden">
@@ -23,16 +23,45 @@
       <form id="enigmeForm">
         <p id="enigmeQuestion"></p>
         <label for="reponse">Réponse :</label>
-        <input type="text" id="reponse" name="reponse" required>
+        <input type="text" id="reponse" name="reponse" required />
         <button type="submit">Soumettre</button>
       </form>
       <button id="backButton" class="hidden">Retour</button>
     </div>
+
+    <h3>Clées obtenues :</h3>
+    <ul id="clesListe"></ul>
+    <button id="sortieButton" class="hidden" onclick="location.href='/victoire.html'">
+      Sortir du Donjon 🗝️
+    </button>
   </div>
 
-  <h3>Clés obtenues :</h3>
-  <ul id="clesListe"></ul>
+  <!-- Musique de fond -->
+  <audio id="backgroundMusic" loop>
+    <source src="/audio/donjon-theme.mp3" type="audio/mp3" />
+    Votre navigateur ne supporte pas l'élément audio.
+  </audio>
 
   <script src="app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('backgroundMusic');
+      music.play().catch(() => {
+        // Si autoplay bloqué, ajouter un bouton pour activer la musique manuellement
+        const btn = document.createElement('button');
+        btn.textContent = '🎵 Activer la musique';
+        btn.style.position = 'fixed';
+        btn.style.top = '10px';
+        btn.style.right = '10px';
+        btn.style.zIndex = 1000;
+        document.body.appendChild(btn);
+        btn.addEventListener('click', () => {
+          music.play();
+          btn.remove();
+        });
+      });
+    });
+  </script>
 </body>
 </html>

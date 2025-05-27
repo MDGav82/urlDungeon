@@ -93,6 +93,19 @@ app.get('/api/sortie/cles', (req, res) => {
   res.json({ cles });
 });
 
+app.post('/api/sortie/reset', (req, res) => {
+  for (const salle in enigmes) {
+    enigmes[salle].trouve = false;
+  }
+  res.status(200).json({ message: 'Le jeu a été réinitialisé.' });
+});
+
+app.post('/api/sortie/cles/reset', (req, res) => {
+  // Réinitialiser ici l'état des clés (par exemple dans la session ou la base)
+  reinitialiserClesPourUtilisateur(req.session.userId);
+  res.json({ message: 'Clés réinitialisées' });
+});
+
 
 
 module.exports = app;
