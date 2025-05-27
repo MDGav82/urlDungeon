@@ -1,0 +1,22 @@
+/* Ajouter un style simple pour cacher et afficher les sections */
+.hidden {
+  display: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

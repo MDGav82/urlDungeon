@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Donjon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue dans le Hall du Donjon</h1>
+    <button id="startEnigmeButton">Commencer l'énigme du Hall</button>
+
+    <div id="enigmesSection" class="hidden">
+      <button id="mathsEnigmeButton">Salle des Maths</button>
+      <button id="codeEnigmeButton">Salle du Code</button>
+      <button id="astronomieEnigmeButton">Salle d'Astronomie</button>
+      <button id="histoireEnigmeButton">Salle d'Histoire</button>
+    </div>
+
+    <div id="enigmeContent" class="hidden">
+      <h2 id="enigmeTitle"></h2>
+      <form id="enigmeForm">
+        <p id="enigmeQuestion"></p>
+        <label for="reponse">Réponse :</label>
+        <input type="text" id="reponse" name="reponse" required>
+        <button type="submit">Soumettre</button>
+      </form>
+      <button id="backButton" class="hidden">Retour</button>
+    </div>
+  </div>
+
+  <h3>Clés obtenues :</h3>
+  <ul id="clesListe"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>

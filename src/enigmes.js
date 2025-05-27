@@ -33,7 +33,7 @@ const enigmes = {
 const verifierReponse = (salle, reponse) => {
   const enigme = enigmes[salle];
   
-  if (enigme && reponse === enigme.reponse) {
+  if (enigme && String(reponse).trim().toLowerCase() === String(enigme.reponse).toLowerCase()) {
     enigme.trouve = true;
     return { success: true, message: 'Bonne réponse, la clé est maintenant disponible !' };
   }
